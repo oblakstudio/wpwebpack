@@ -2,5 +2,6 @@ src
 .editorconfig
 .eslintrc.json
 tsconfig.json
+package-lock.json
 yarn-error.log
 yarn.lock
