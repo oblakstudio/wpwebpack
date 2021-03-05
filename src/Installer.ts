@@ -125,6 +125,9 @@ class Installer {
     );
   }
 
+  /**
+   * Displays confirm files promt during installation
+   */
   private async confirmOverwrite() : Promise<void> {
 
     console.log(logSymbols.error, r('Detected WP-webpack instalation files.'));
