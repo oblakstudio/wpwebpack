@@ -20,8 +20,8 @@ jobs:
         run: npm install
       - name: Install semantic-release/changelog
         run: npm install @semantic-release/changelog -D
-      - name: Lint and test
-        run: npm run test
+      - name: Lint
+        run: npm run lint
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
