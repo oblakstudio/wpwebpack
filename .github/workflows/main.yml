@@ -18,6 +18,8 @@ jobs:
           node-version: 12
       - name: Install dependencies
         run: npm install
+      - name: Install semantic-release/changelog
+        run: npm install @semantic-release/changelog -D
       - name: Lint and test
         run: npm run test
       - name: Release
