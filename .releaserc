@@ -1,15 +1,15 @@
 {
   "branches": ["master", "next"],
   "plugins": [
-    [
-      "@semantic-release/changelog",
-      {
-        "changelogFile": "CHANGELOG.md"
-      }
-    ],
+    ["@semantic-release/changelog", {
+      "changelogFile": "CHANGELOG.md"
+    }],
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
-    "@semantic-release/git",
+    ["@semantic-release/git", {
+      "assets": ["dist/**/*.{js,ts}", "CHANGELOG.md", "package.json"],
+      "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+    }],
     "@semantic-release/npm"
   ],
   "publishConfig": {
