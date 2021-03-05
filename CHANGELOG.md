@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/oblakstudio/wpwebpack/compare/v1.0.0...v1.1.0) (2021-03-05)
+
+
+### Bug Fixes
+
+* **build:** Fixed npx execution ([053c9cf](https://github.com/oblakstudio/wpwebpack/commit/053c9cfe968ae771de44b3b126a161bb8f9d2eaa))
+
+
+### Features
+
+* **build:** tweaked sem-res builds ([f356a38](https://github.com/oblakstudio/wpwebpack/commit/f356a38766a34c5b0d3bba764ad3f58225ae36ea))
+
 # 1.0.0 (2021-03-05)
 
 
