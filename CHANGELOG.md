@@ -6,6 +6,23 @@
 * **build:** Fixed [#1](https://github.com/oblakstudio/wpwebpack/issues/1) ([b9be74f](https://github.com/oblakstudio/wpwebpack/commit/b9be74f02ace83037c4148adaa13a84cb190d86d))
 * **build:** Fixed [#2](https://github.com/oblakstudio/wpwebpack/issues/2) ([f29d648](https://github.com/oblakstudio/wpwebpack/commit/f29d648c52b62c37dc3169e20c47598294562c5b))
 * **build:** Fixed build workflow ([46b935b](https://github.com/oblakstudio/wpwebpack/commit/46b935b949540dc3511e46a48d2f6606dba56242))
+* **build:** Fixed permission issue ([1309326](https://github.com/oblakstudio/wpwebpack/commit/1309326bd98badc1de82311baa3b68092cfd878a))
+* **core:** Fixed the stupid two-repo workflow ([8e36f46](https://github.com/oblakstudio/wpwebpack/commit/8e36f46a388c1aa900a1feabab6a0215e369bb67))
+* **core:** Fixed typo in package.json ([fdc4600](https://github.com/oblakstudio/wpwebpack/commit/fdc460091003ee39515f27840f11cf744e5f95b2))
+
+
+### Features
+
+* **docs:** Removed unneeded header from readme [skip release] ([f725b17](https://github.com/oblakstudio/wpwebpack/commit/f725b178f7f6933a21d6f9457d4efe3aa22d5c4f))
+
+## [1.2.1](https://github.com/oblakstudio/wpwebpack/compare/v1.2.0...v1.2.1) (2021-03-06)
+
+
+### Bug Fixes
+
+* **build:** Fixed [#1](https://github.com/oblakstudio/wpwebpack/issues/1) ([b9be74f](https://github.com/oblakstudio/wpwebpack/commit/b9be74f02ace83037c4148adaa13a84cb190d86d))
+* **build:** Fixed [#2](https://github.com/oblakstudio/wpwebpack/issues/2) ([f29d648](https://github.com/oblakstudio/wpwebpack/commit/f29d648c52b62c37dc3169e20c47598294562c5b))
+* **build:** Fixed build workflow ([46b935b](https://github.com/oblakstudio/wpwebpack/commit/46b935b949540dc3511e46a48d2f6606dba56242))
 * **core:** Fixed the stupid two-repo workflow ([8e36f46](https://github.com/oblakstudio/wpwebpack/commit/8e36f46a388c1aa900a1feabab6a0215e369bb67))
 * **core:** Fixed typo in package.json ([fdc4600](https://github.com/oblakstudio/wpwebpack/commit/fdc460091003ee39515f27840f11cf744e5f95b2))
 
