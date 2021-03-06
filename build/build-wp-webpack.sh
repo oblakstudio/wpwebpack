@@ -6,5 +6,7 @@ CURRENT_VERSION=$(cat package.json | grep version | head -1 | awk -F= "{ print $
 sed -ie "s/\"version\": \"$CURRENT_VERSION\"/\"version\": \"$NEXT_VERSION\"/g" package.json
 rm -f package.jsone
 
+npm run build
+
 cd src
 zip -r ../build/wp-webpack-$NEXT_VERSION.zip ./.
