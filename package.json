@@ -1,5 +1,6 @@
 {
   "name": "wpwebpack",
+  "description": "Bleeding-edge build workflow for WordPress",
   "version": "1.5.0",
   "license": "GPL-3.0",
   "contributors": [
@@ -14,6 +15,8 @@
       "url": "https://zabole.me"
     }
   ],
+  "homepage": "https://wpwebpack.js.org",
+  "bugs": "https://github.com/oblakstudio/wpwebpack/issues",
   "keywords": [
     "wpwebpack",
     "WP webpack",

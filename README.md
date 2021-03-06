@@ -45,7 +45,7 @@ WPwebpack is a webpack wrapper designed to be used in WordPress ecosystem. It's 
 
 ### Get Started
 
-Check out our quick [Get started](https://rtfm.oblak.studio/wpwebpack/#/getstarted) guide
+Check out our quick [Get started](https://wpwebpack.js.org) guide
 
 ## Features
 

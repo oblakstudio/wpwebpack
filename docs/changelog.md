@@ -1,3 +1,15 @@
+# [1.5.0](https://github.com/oblakstudio/wpwebpack/compare/v1.4.0...v1.5.0) (2021-03-06)
+
+
+### Bug Fixes
+
+* **docs:** Added basic documentation [skip ci] ([4d913c1](https://github.com/oblakstudio/wpwebpack/commit/4d913c1529a3f2869b8f3ba9948f6285e91760d2))
+
+
+### Features
+
+* **build:** Streamlined build process ([47ab30b](https://github.com/oblakstudio/wpwebpack/commit/47ab30bf3329f3c2ecd9881a1f219cc827606905))
+
 # [1.4.0](https://github.com/oblakstudio/wpwebpack/compare/v1.3.6...v1.4.0) (2021-03-06)
 
 
