@@ -163,7 +163,7 @@ class Installer {
 
   private async downloadRelease(version: string) {
 
-    const releaseFile : Buffer = await download(`https://api.github.com/repos/oblakstudio/wpwebpack/zipball/v${version}`);
+    const releaseFile : Buffer = await download(`https://github.com/oblakstudio/wpwebpack/releases/download/v${version}/wp-webpack-${version}.zip`);
     const unzippedDir: unzipper.CentralDirectory = await unzipper.Open.buffer(releaseFile);
 
     //for each file
@@ -181,7 +181,7 @@ class Installer {
 
     return unzippedDir.files.filter((file) => 'File' === file.type).map(async (file) => {
 
-      const formattedPath = [this.installDir].concat(file.path.split('/').slice(1));
+      const formattedPath = [this.installDir].concat(file.path);
       const fullPath      = path.resolve(...formattedPath);
 
       return await fs.outputFile(
