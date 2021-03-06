@@ -1,3 +1,15 @@
+# [1.4.0](https://github.com/oblakstudio/wpwebpack/compare/v1.3.6...v1.4.0) (2021-03-06)
+
+
+### Bug Fixes
+
+* **core:** Fixed config includes that caused erroneous jQuery include ([e98d771](https://github.com/oblakstudio/wpwebpack/commit/e98d771100eda7871f14d2a91084d2816babdf45))
+
+
+### Features
+
+* **docs:** Added a Docsify template [skip ci] ([9383429](https://github.com/oblakstudio/wpwebpack/commit/9383429ed289ff52cc948bfe44c7b8169500556a))
+
 ## [1.3.6](https://github.com/oblakstudio/wpwebpack/compare/v1.3.5...v1.3.6) (2021-03-06)
 
 
