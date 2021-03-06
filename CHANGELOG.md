@@ -1,3 +1,16 @@
+# [1.3.0](https://github.com/oblakstudio/wpwebpack/compare/v1.2.5...v1.3.0) (2021-03-06)
+
+
+### Bug Fixes
+
+* **docs:** Fixed README.md ([8e3040a](https://github.com/oblakstudio/wpwebpack/commit/8e3040ae757db0ab2c2f9ca1358f10212f1d952e))
+* **docs:** Fixed README.md [skip ci] ([23cd832](https://github.com/oblakstudio/wpwebpack/commit/23cd832395f7e0833f3fe3bf8ef6a741f6e6aa41))
+
+
+### Features
+
+* **installer:** Change the installer to work with this repo ([f1d301e](https://github.com/oblakstudio/wpwebpack/commit/f1d301ebc8174e11c102a815ae26e4480efb7bb3))
+
 ## [1.2.5](https://github.com/oblakstudio/wpwebpack/compare/v1.2.4...v1.2.5) (2021-03-06)
 
 
