@@ -1,6 +1,7 @@
 .github
 src
 build
+docs
 ./installer
 .editorconfig
 .eslintrc.json
