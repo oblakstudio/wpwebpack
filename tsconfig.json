@@ -4,10 +4,10 @@
     "allowJs": true,
     "strict": true,
     "declaration": true,
-    "outDir": "./dist",
+    "outDir": "./dist/",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "resolveJsonModule": true
   },
-  "include": ["installer/**/*"]
+  "include": ["installer/*"]
 }
