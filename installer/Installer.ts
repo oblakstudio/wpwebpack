@@ -16,15 +16,6 @@ const clearConsole = require('clear-any-console');
 class Installer {
 
   /**
-   * Current WP-webpack release
-   *
-   * @private
-   * @static
-   * @memberof Installer
-   */
-  private static RELEASE = '1.0';
-
-  /**
    * WP-webpack installation directory
    *
    * @private
@@ -32,6 +23,15 @@ class Installer {
    * @memberof Installer
    */
   private installDir : string;
+
+  /**
+   * Release version
+   *
+   * @private
+   * @type {string}
+   * @memberof Installer
+   */
+  private releaseVer : string;
 
   /**
    * Spinner variable for use in console
@@ -42,7 +42,7 @@ class Installer {
    */
   private spinner : ora.Ora;
 
-  public constructor() {
+  public constructor(version: string) {
 
     const argv = yargs.options({
       dir: {
@@ -52,6 +52,7 @@ class Installer {
       },
     }).argv;
 
+    this.releaseVer = version;
     this.installDir = (argv.dir as string) ?? process.cwd();
 
     this.spinner = ora({
@@ -148,7 +149,7 @@ class Installer {
 
     this.spinner.start(`${y('DOWNLOADING')} WP-webpack files...`);
 
-    await this.downloadRelease(Installer.RELEASE);
+    await this.downloadRelease(this.releaseVer);
 
     this.spinner.succeed(`${g(`DOWNLOADED`)} WP-webpack files`);
 
@@ -162,7 +163,7 @@ class Installer {
 
   private async downloadRelease(version: string) {
 
-    const releaseFile : Buffer = await download(`https://api.github.com/repos/oblakstudio/wp-webpack/zipball/${version}`);
+    const releaseFile : Buffer = await download(`https://api.github.com/repos/oblakstudio/wpwebpack/zipball/${version}`);
     const unzippedDir: unzipper.CentralDirectory = await unzipper.Open.buffer(releaseFile);
 
     //for each file
