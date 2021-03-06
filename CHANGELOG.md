@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/oblakstudio/wpwebpack/compare/v1.1.0...v1.2.0) (2021-03-06)
+
+
+### Features
+
+* **docs:** Improved readme and added package.json keywords ([84727cf](https://github.com/oblakstudio/wpwebpack/commit/84727cf8cd3375a71f37607be38fcfc3ed743ea7))
+
 # [1.1.0](https://github.com/oblakstudio/wpwebpack/compare/v1.0.0...v1.1.0) (2021-03-05)
 
 

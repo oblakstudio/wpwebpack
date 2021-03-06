@@ -15,13 +15,13 @@
     }
   ],
   "keywords": [
-		"wpwebpack",
-		"WP webpack",
-		"WordPress webpack",
-		"Install wpwebpack",
-		"Webpack with WordPress",
+    "wpwebpack",
+    "WP webpack",
+    "WordPress webpack",
+    "Install wpwebpack",
+    "Webpack with WordPress",
     "Webpack for WordPress"
-	],
+  ],
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch",
