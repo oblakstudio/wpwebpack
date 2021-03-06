@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/oblakstudio/wpwebpack/compare/v1.2.3...v1.2.4) (2021-03-06)
+
+
+### Bug Fixes
+
+* **build:** Added update to package.json version ([4ef0249](https://github.com/oblakstudio/wpwebpack/commit/4ef024975ae8740f6088b8d69b145f9a64d6f4a4))
+
 ## [1.2.3](https://github.com/oblakstudio/wpwebpack/compare/v1.2.2...v1.2.3) (2021-03-06)
 
 
