@@ -16,7 +16,6 @@
       ]
     }],
     ["@semantic-release/exec", {
-      "verifyConditionsCmd": "./build/test-wp-webpack.sh",
       "prepareCmd": "./build/build-wp-webpack.sh ${nextRelease.version}"
     }],
     "@semantic-release/npm"
