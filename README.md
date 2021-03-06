@@ -1,5 +1,3 @@
-# WPwp (WP webpack)
-
 <div align="center">
 
   <img src="https://repo.oblak.studio/wpwebpack.png">
