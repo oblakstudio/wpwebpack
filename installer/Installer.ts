@@ -163,7 +163,7 @@ class Installer {
 
   private async downloadRelease(version: string) {
 
-    const releaseFile : Buffer = await download(`https://api.github.com/repos/oblakstudio/wpwebpack/zipball/${version}`);
+    const releaseFile : Buffer = await download(`https://api.github.com/repos/oblakstudio/wpwebpack/zipball/v${version}`);
     const unzippedDir: unzipper.CentralDirectory = await unzipper.Open.buffer(releaseFile);
 
     //for each file
