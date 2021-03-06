@@ -1,3 +1,10 @@
+## [1.3.3](https://github.com/oblakstudio/wpwebpack/compare/v1.3.2...v1.3.3) (2021-03-06)
+
+
+### Bug Fixes
+
+* **npm:** Fixed npmignore ([ef81f1c](https://github.com/oblakstudio/wpwebpack/commit/ef81f1c61cacf0098e5ea5e918ab5cd76eb8e805))
+
 ## [1.3.2](https://github.com/oblakstudio/wpwebpack/compare/v1.3.1...v1.3.2) (2021-03-06)
 
 
