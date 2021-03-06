@@ -1,3 +1,10 @@
+## [1.3.5](https://github.com/oblakstudio/wpwebpack/compare/v1.3.4...v1.3.5) (2021-03-06)
+
+
+### Bug Fixes
+
+* **installer:** Fixed zip file handling ([0572467](https://github.com/oblakstudio/wpwebpack/commit/0572467684833b35f372eb28abadcc6382a89242))
+
 ## [1.3.4](https://github.com/oblakstudio/wpwebpack/compare/v1.3.3...v1.3.4) (2021-03-06)
 
 
