@@ -16,7 +16,7 @@
       ]
     }],
     ["@semantic-release/exec", {
-      "prepareCmd": "./build/build-wp-webpack.sh ${nextRelease.version}"
+      "prepareCmd": "sh ./build/build-wp-webpack.sh ${nextRelease.version}"
     }],
     "@semantic-release/npm"
   ],
