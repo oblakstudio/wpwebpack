@@ -1,3 +1,11 @@
+## [1.3.4](https://github.com/oblakstudio/wpwebpack/compare/v1.3.3...v1.3.4) (2021-03-06)
+
+
+### Bug Fixes
+
+* **build:** Tweaked build process to include the latest version in the installer ([c4a5211](https://github.com/oblakstudio/wpwebpack/commit/c4a521126025fdd5260a394ad035f033a46d30c8))
+* **installer:** Fixed zipball url ([6c933c1](https://github.com/oblakstudio/wpwebpack/commit/6c933c1137e5206774c8e60bce7be62de45bffc2))
+
 ## [1.3.3](https://github.com/oblakstudio/wpwebpack/compare/v1.3.2...v1.3.3) (2021-03-06)
 
 
