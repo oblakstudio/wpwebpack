@@ -1,4 +1,7 @@
+.github
 src
+build
+installer
 .editorconfig
 .eslintrc.json
 tsconfig.json

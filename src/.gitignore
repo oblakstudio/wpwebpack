@@ -1,0 +1,4 @@
+dist
+node_modules
+languages/*
+yarn.lock
