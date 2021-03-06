@@ -1,3 +1,11 @@
+## [1.3.6](https://github.com/oblakstudio/wpwebpack/compare/v1.3.5...v1.3.6) (2021-03-06)
+
+
+### Bug Fixes
+
+* **core:** remove unneeded files ([6c7da0d](https://github.com/oblakstudio/wpwebpack/commit/6c7da0d3873b3feec766e6fee3c7c4f866b35585))
+* **core:** Removed unneeded NPM packages ([0210ea1](https://github.com/oblakstudio/wpwebpack/commit/0210ea116cf2846ef8e9e5338f79ba7240a55741))
+
 ## [1.3.5](https://github.com/oblakstudio/wpwebpack/compare/v1.3.4...v1.3.5) (2021-03-06)
 
 
