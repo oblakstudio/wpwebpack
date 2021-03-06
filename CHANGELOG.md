@@ -1,3 +1,11 @@
+## [1.3.2](https://github.com/oblakstudio/wpwebpack/compare/v1.3.1...v1.3.2) (2021-03-06)
+
+
+### Bug Fixes
+
+* **build:** Fixed file paths in the installer binary ([7bfbced](https://github.com/oblakstudio/wpwebpack/commit/7bfbceda320cb81484740ce786c4c9b02ffd3a4f))
+* **core:** Fixed tsc errors ([1abfb6c](https://github.com/oblakstudio/wpwebpack/commit/1abfb6c60f07890cd5c52d16204daf9f6d690bd8))
+
 ## [1.3.1](https://github.com/oblakstudio/wpwebpack/compare/v1.3.0...v1.3.1) (2021-03-06)
 
 
