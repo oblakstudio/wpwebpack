@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/oblakstudio/wpwebpack/compare/v1.2.1...v1.2.2) (2021-03-06)
+
+
+### Bug Fixes
+
+* **build:** Fixed zip glob for asset name ([1611434](https://github.com/oblakstudio/wpwebpack/commit/1611434e3c2fb661d7694bbad8fc15b967fbb8c0))
+
 ## [1.2.1](https://github.com/oblakstudio/wpwebpack/compare/v1.2.0...v1.2.1) (2021-03-06)
 
 
