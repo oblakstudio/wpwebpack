@@ -14,7 +14,8 @@ const rootPath = (userConfig.paths && userConfig.paths.root)
 const config = merge({
   open: true,
   copy: 'images/**/*',
-  cacheBusting: '[name]_[hash]',
+  cacheBusting: userConfig.cacheBusting,
+  externals: userConfig.externals,
   paths: {
     root: rootPath,
     assets: path.join(rootPath, 'assets'),
