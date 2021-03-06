@@ -1,3 +1,10 @@
+## [1.2.5](https://github.com/oblakstudio/wpwebpack/compare/v1.2.4...v1.2.5) (2021-03-06)
+
+
+### Bug Fixes
+
+* **build:** Fixed order of semantic-release plugins ([2258c4f](https://github.com/oblakstudio/wpwebpack/commit/2258c4fd307defffee5316eda6615d210facd01d))
+
 ## [1.2.4](https://github.com/oblakstudio/wpwebpack/compare/v1.2.3...v1.2.4) (2021-03-06)
 
 
