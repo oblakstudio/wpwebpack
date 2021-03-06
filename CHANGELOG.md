@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/oblakstudio/wpwebpack/compare/v1.2.2...v1.2.3) (2021-03-06)
+
+
+### Bug Fixes
+
+* **build:** Fixed zip file folder path ([b4f5e93](https://github.com/oblakstudio/wpwebpack/commit/b4f5e933935f991503d55dd96ec4a72b9bc74074))
+
 ## [1.2.2](https://github.com/oblakstudio/wpwebpack/compare/v1.2.1...v1.2.2) (2021-03-06)
 
 
