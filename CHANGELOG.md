@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/oblakstudio/wpwebpack/compare/v1.3.0...v1.3.1) (2021-03-06)
+
+
+### Bug Fixes
+
+* **build:** Assets not compiling during deploy process ([a8aefde](https://github.com/oblakstudio/wpwebpack/commit/a8aefde83d8813750bf372ba6221535a6e063f2c))
+
 # [1.3.0](https://github.com/oblakstudio/wpwebpack/compare/v1.2.5...v1.3.0) (2021-03-06)
 
 
