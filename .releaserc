@@ -12,7 +12,7 @@
     }],
     ["@semantic-release/github", {
       "assets": [
-        {"path": "build/wp-webpack-${nextRelease.version}.zip", "label": "WPwebpack version ${nextRelease.version}"}
+        {"path": "build/*.zip", "label": "WPwebpack version ${nextRelease.version}"}
       ]
     }],
     ["@semantic-release/exec", {
