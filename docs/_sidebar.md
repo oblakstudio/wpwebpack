@@ -1,6 +1,6 @@
 - Getting Started
   - [Quick start](quickstart.md)
-  - [Using TypeScript](typescript.md)
+  - [Development 101](devstart.md)
 
 - Customization
   - [Configuration](wpwpconfig.md)
@@ -8,9 +8,11 @@
   - [Browserlist](browserlist.md)
   - [webpack](webpackconfig.md)
 
-- Guide
-  - [Adding assets](additionalassets.md)
-  - [Enqueing assets](enqueueing.md)
-  - [CDN setup](cdn.md)
+- Guides
+  - [Adding additional assets](additionalassets.md)
+  - [Enqueing assets in WP](enqueueing.md)
+  - [Writing better SASS](sass.md)
+  - [Advanced(ish) TypeScript](typescript.md)
+  - [CDN support](cdn.md)
 
 - [Changelog](changelog.md)

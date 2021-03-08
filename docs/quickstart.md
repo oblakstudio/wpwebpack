@@ -41,9 +41,9 @@ Edit the `wpwp.config.js` and set:
 
 Out-of-the-box, WPwebpack supports the following commands:
 
-* `build` - Builds unminified/unoptimized assets with source maps
-* `build:production` - Builds optimized/minified assets
-* `watch` - Starts the browsersync session and monitors the files for changes
+* `yarn build` - Builds unminified/unoptimized assets with source maps
+* `yarn build:production` - Builds optimized/minified assets
+* `yarn watch` - Starts the browsersync session and monitors the files for changes
 
 ## Generating translation files
 
