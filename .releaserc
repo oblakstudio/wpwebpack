@@ -7,7 +7,7 @@
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
     ["@semantic-release/exec", {
-      "prepareCmd": "sh ./build/build-wp-webpack.sh ${nextRelease.version}"
+      "prepareCmd": "sh ./build/release.sh ${nextRelease.version}"
     }],
     ["@semantic-release/git", {
       "assets": ["docs/changelog.md", "package.json", "src/package.json"],
