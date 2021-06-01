@@ -38,14 +38,6 @@ module.exports = {
   },
 
   /*
-  Root path for the asset files.
-
-  If theme it should be: /wp-content/themes/theme-name
-  If plugin it should be: /wp-content/plugins/plugin-name
-  */
-  publicPath: '',
-
-  /*
   Files to watch
   */
   watch: [
@@ -55,6 +47,21 @@ module.exports = {
     'woocommerce/**/*.php',
     '*.php',
   ],
+
+  /*
+  Run linters during build process
+
+  Will speed up building, but allows for style and code errors
+  */
+  lintOnBuild: false,
+
+  /*
+  Root path for the asset files.
+
+  If theme it should be: /wp-content/themes/theme-name
+  If plugin it should be: /wp-content/plugins/plugin-name
+  */
+  publicPath: '',
 
   devUrl: '',
 

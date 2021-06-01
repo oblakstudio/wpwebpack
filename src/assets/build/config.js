@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path      = require('path');
-const { argv }  = require('yargs');
+const { argv, config }  = require('yargs');
 const { merge } = require('webpack-merge');
 
 // eslint-disable-next-line import/no-dynamic-require
@@ -11,7 +11,7 @@ const rootPath = (userConfig.paths && userConfig.paths.root)
   ? userConfig.paths.root
   : process.cwd();
 
-const config = merge({
+const wpwpConfig = merge({
   useFibers: ( nodeVersion != 16 ) ? true : false,
   open: true,
   copy: 'images/**/*',
@@ -27,13 +27,14 @@ const config = merge({
     optimize: isProduction,
     cacheBusting: isProduction,
     watcher: !!argv.watch,
+    linter: userConfig.lintOnBuild,
   },
   watch: [],
 }, userConfig);
 
-module.exports = merge(config, {
+module.exports = merge(wpwpConfig, {
   env: Object.assign({ production: isProduction, development: !isProduction }, argv.env),
-  publicPath: `${config.publicPath}/${path.basename(config.paths.dist)}/`,
+  publicPath: `${wpwpConfig.publicPath}/${path.basename(wpwpConfig.paths.dist)}/`,
   manifest: {},
 });
 

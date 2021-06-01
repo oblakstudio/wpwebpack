@@ -4,8 +4,7 @@
 const { merge }= require('webpack-merge');
 const { CleanWebpackPlugin  } = require('clean-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
-const ESLintPlugin = require('eslint-webpack-plugin');
-const StyleLintPlugin = require('stylelint-webpack-plugin');
+
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const FriendlyErrorsWebpackPlugin = require('@soda/friendly-errors-webpack-plugin');
 
@@ -95,11 +94,6 @@ let webpackConfig = {
         },
       ],
     }),
-    new ESLintPlugin({
-      extensions: ['ts'],
-      failOnError: true,
-      failOnWarning: true,
-    }),
     new MiniCssExtractPlugin({
       filename: `styles/${assetsFilenames}.css`,
     }),
@@ -107,17 +101,17 @@ let webpackConfig = {
       verbose: false,
       cleanStaleWebpackAssets: true,
     }),
-    new StyleLintPlugin({
-      failOnError: !config.enabled.watcher,
-      syntax: 'scss',
-      configFile: `${config.paths.root}/.stylelintrc`,
-    }),
     new FriendlyErrorsWebpackPlugin(),
   ],
   resolve: {
     extensions: ['.ts', '.scss', '.css', '.js'],
   },
 };
+
+// Enable linting during build
+if (config.enabled.linter) {
+  webpackConfig = merge(webpackConfig, require('./webpack.config.lint'));
+}
 
 // Enable optimizations for production builds
 if (config.enabled.optimize) {
