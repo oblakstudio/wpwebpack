@@ -1,3 +1,35 @@
+# [2.0.0](https://github.com/oblakstudio/wpwebpack/compare/v1.5.0...v2.0.0) (2021-06-01)
+
+
+### Bug Fixes
+
+* **build:** Changed the release script path in .releaserc ([c02b7c9](https://github.com/oblakstudio/wpwebpack/commit/c02b7c95f920ee9d389df27917c9070022397774))
+* **core:** Fixed images and fonts assets in node_modules folder not being added to the dist ([75ecade](https://github.com/oblakstudio/wpwebpack/commit/75ecadecd9ffe4c01b1036fb646b8d2e26e99af5))
+* **core:** Removed folder added by mistake [skip ci] ([61b6502](https://github.com/oblakstudio/wpwebpack/commit/61b6502e0f0938e179c92a5fe096c4e80eb7bf7e))
+* **core:** Removed git property from package.json to prevent conflicts with semantic-release ([287949a](https://github.com/oblakstudio/wpwebpack/commit/287949a0abe1db9aa9b202bf6444a34e43f092a0))
+* **core:** Removed languages folder from gitignore ([8c8b9c0](https://github.com/oblakstudio/wpwebpack/commit/8c8b9c0769c4db2c1882a48486806dbd639e9934))
+* **core:** Removed sourceMap option from CSS loader due to 5.0.0 upgrade recommendations and fixed [#4](https://github.com/oblakstudio/wpwebpack/issues/4) ([b0dc690](https://github.com/oblakstudio/wpwebpack/commit/b0dc690241cec494e962a27aa028935bc383c651))
+* **core:** removed unsued var from config.js ([8e1de40](https://github.com/oblakstudio/wpwebpack/commit/8e1de406005269a3af62371ea8c867356d87b68d))
+* **core:** removed unused vars ([ced0b2a](https://github.com/oblakstudio/wpwebpack/commit/ced0b2addafa3c759173d15bc6e001f33a2a6d16))
+* **core:** Removed yarn.lock and yarn-error.log from git and added them to gitignore ([89bdea8](https://github.com/oblakstudio/wpwebpack/commit/89bdea802b960b61ddc714970a8b0bce7ac1b668))
+* **docs:** Fixed getting started link [skip ci] ([7fb60e6](https://github.com/oblakstudio/wpwebpack/commit/7fb60e640ee910d46825b0e84805dc2ce8aad62f))
+* **docs:** Restored docs deleted by mistake ([057a8f1](https://github.com/oblakstudio/wpwebpack/commit/057a8f10ca3032011db4c1fcf895fe11c7d2d3bc))
+
+
+### Features
+
+* **build:** Added proper versioning to wpwebpack package.json ([866a8d7](https://github.com/oblakstudio/wpwebpack/commit/866a8d7feab2f7c772d2c06f115f476824cdcd29))
+* **core:** Added the option to turn off linting during the build process ([830c4ab](https://github.com/oblakstudio/wpwebpack/commit/830c4ab2255d5ab1157301538f4a8e91205a52d3))
+* **core:** Removed home resolver and renamed common route to follow angular standards ([9000788](https://github.com/oblakstudio/wpwebpack/commit/90007884a2a7119c0a4ba1f7771a346032b81c27))
+* **docs:** Improved the documentation [skip ci] ([9bb8362](https://github.com/oblakstudio/wpwebpack/commit/9bb83628150c77dfd50beedf0c5001cce7054256))
+* **npm:** Upgraded package versions ([d2ca644](https://github.com/oblakstudio/wpwebpack/commit/d2ca644a085da5e6df1a6f8c38ac351afa7c4d81))
+* **updater:** Added the updater ([9508fda](https://github.com/oblakstudio/wpwebpack/commit/9508fda1a46baf92a8bff2cf106194888e49f4ae))
+
+
+### BREAKING CHANGES
+
+* **npm:** TypeScript updated to 4.3.2. Please test your code thoroughly for regression bugs
+
 # [1.5.0](https://github.com/oblakstudio/wpwebpack/compare/v1.4.0...v1.5.0) (2021-03-06)
 
 
