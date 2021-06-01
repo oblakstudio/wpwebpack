@@ -3,12 +3,24 @@
   "ignoreFiles": ["**/*.js"],
   "ignore": [
     "no-descending-specificity",
-    "selectors-within-list",
+    "selectors-within-list"
   ],
   "rules": {
     "no-descending-specificity": null,
     "no-empty-source": null,
     "string-quotes": "double",
+    "value-keyword-case": [
+      "lower",
+      {
+        "ignoreKeywords": [
+          "BlinkMacSystemFont"
+        ],
+        "ignoreProperties": [
+          "$main_font_family",
+          "$font-family-base"
+        ]
+      }
+    ],
     "at-rule-no-unknown": [
       true,
       {
