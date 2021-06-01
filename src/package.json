@@ -70,9 +70,5 @@
     "camelcase": "^6.2.0",
     "core-js": "3",
     "jquery": "3.5.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/oblakstudio/wp-webpack-build.git"
   }
 }
