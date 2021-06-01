@@ -7,7 +7,7 @@ import logSymbols from 'log-symbols';
 import prompts from 'prompts';
 import download from 'download';
 import * as unzipper from 'unzipper';
-import {red as r, yellow as y, green as g, cyan as c, blueBright as b} from 'chalk';
+import {yellow as y, green as g, cyan as c, blueBright as b} from 'chalk';
 import { command } from 'execa';
 import Upgrader from './upgrader';
 
