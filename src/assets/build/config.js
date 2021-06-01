@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path      = require('path');
-const { argv, config }  = require('yargs');
+const { argv }  = require('yargs');
 const { merge } = require('webpack-merge');
 
 // eslint-disable-next-line import/no-dynamic-require
