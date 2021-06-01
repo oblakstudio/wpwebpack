@@ -10,7 +10,7 @@
       "prepareCmd": "sh ./build/build-wp-webpack.sh ${nextRelease.version}"
     }],
     ["@semantic-release/git", {
-      "assets": ["docs/changelog.md", "package.json"],
+      "assets": ["docs/changelog.md", "package.json", "src/package.json"],
       "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
     }],
     ["@semantic-release/github", {
