@@ -23,6 +23,8 @@ declare class Installer {
      * @memberof Installer
      */
     private spinner;
+    private upgrading;
+    private upgradeDir;
     constructor(version: string);
     /**
      * Main installer function
@@ -35,7 +37,7 @@ declare class Installer {
     /**
      * Displays confirm files promt during installation
      */
-    private confirmOverwrite;
+    private upgradePrompt;
     private install;
     private downloadRelease;
     private extractFiles;

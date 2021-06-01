@@ -6,12 +6,10 @@ import ora from 'ora';
 import logSymbols from 'log-symbols';
 import prompts from 'prompts';
 import download from 'download';
-import checkNode from 'check-node-version';
 import * as unzipper from 'unzipper';
-import {red as r, yellow as y, green as g} from 'chalk';
+import {red as r, yellow as y, green as g, cyan as c, blueBright as b} from 'chalk';
 import { command } from 'execa';
-
-const clearConsole = require('clear-any-console');
+import Upgrader from './upgrader';
 
 class Installer {
 
@@ -42,6 +40,10 @@ class Installer {
    */
   private spinner : ora.Ora;
 
+  private upgrading : boolean
+
+  private upgradeDir : string;
+
   public constructor(version: string) {
 
     const argv = yargs.options({
@@ -53,7 +55,9 @@ class Installer {
     }).argv;
 
     this.releaseVer = version;
-    this.installDir = (argv.dir as string) ?? process.cwd();
+    this.installDir = path.resolve(process.cwd(), (argv.dir as string)) ?? process.cwd();
+    this.upgradeDir = path.resolve(this.installDir, 'tmp');
+    this.upgrading = false;
 
     this.spinner = ora({
       text: '',
@@ -70,7 +74,7 @@ class Installer {
   public async run() : Promise<number> {
 
     try {
-      await this.sanityCheck();
+      this.sanityCheck();
     }
     catch (error) {
       this.exit(error.message);
@@ -79,11 +83,9 @@ class Installer {
 
     try {
 
-      if (this.preinstallCheck()) {
-        await this.confirmOverwrite();
-      }
+      const upgrade = (this.preinstallCheck()) ? await this.upgradePrompt() : false;
 
-      await this.install();
+      await this.install(upgrade);
 
       return 0;
     }
@@ -94,26 +96,19 @@ class Installer {
 
   }
 
-  private async sanityCheck() : Promise<void> {
+  private sanityCheck() : void {
 
-    clearConsole();
+    console.clear();
 
-    const manualPromisification = new Promise<void>((resolve, reject) => {
-      checkNode(
-        {node: '>= 12'},
-        (error, result) => {
-          if (error) {
-            return reject(error);
-          }
-          if (!result.isSatisfied) {
-            return reject(new Error(`Incorrect Node.js version. Required: ${result.versions.node.wanted}, Found:${result.versions.node.version}`));
-          }
-          return resolve();
-        }
-      );
-    });
+    console.log(`Welcome to ${c('WPwebpack')} installer v${this.releaseVer}`);
+    console.log(`Depending on your internet and computer speed, this might take a couple of minutes`);
 
-    await manualPromisification;
+    const nodeVersion = parseInt(process.versions.node.split('.')[0]);
+
+    if (nodeVersion < 12) {
+      throw new Error(`Incorrect Node.js version. Required: 12, Found:${nodeVersion}`)
+    }
+
 
   }
 
@@ -129,29 +124,48 @@ class Installer {
   /**
    * Displays confirm files promt during installation
    */
-  private async confirmOverwrite() : Promise<void> {
+  private async upgradePrompt() : Promise<boolean> {
 
-    console.log(logSymbols.error, r('Detected WP-webpack instalation files.'));
+    console.log(logSymbols.info, y('Detected WP-webpack instalation files.'));
 
-    const response = await prompts({
+    const doUpgrade = await prompts({
       type: 'text',
-      name: 'overwrite',
+      name: 'response',
+      message: 'Upgrade? (y/n)',
+    });
+
+    if (doUpgrade.response == 'y') {
+      return true;
+    }
+
+    const doOverwrite = await prompts({
+      type: 'text',
+      name: 'response',
       message: 'Overwrite? (y/n)',
     });
 
-    if (response.overwrite !== 'y') {
+    if (doOverwrite.response !== 'y') {
       throw new Error('Installation cancelled');
     }
 
+    return false;
+
   }
 
-  private async install() : Promise<void> {
+  private async install(upgrade : boolean) : Promise<void> {
+
+    const downloadDir = upgrade ? this.upgradeDir : this.installDir;
 
     this.spinner.start(`${y('DOWNLOADING')} WP-webpack files...`);
 
-    await this.downloadRelease(this.releaseVer);
+    await this.downloadRelease(this.releaseVer, downloadDir);
 
     this.spinner.succeed(`${g(`DOWNLOADED`)} WP-webpack files`);
+
+    if (upgrade) {
+      const upgrader = new Upgrader(this.installDir, this.upgradeDir);
+      await upgrader.run();
+    }
 
     this.spinner.start(`${y('Installing')} packages...`);
 
@@ -159,29 +173,31 @@ class Installer {
 
     this.spinner.succeed(`${g(`Installed`)} packages`);
 
+    this.postInstall();
+
   }
 
-  private async downloadRelease(version: string) {
+  private async downloadRelease(version: string, dirPath: string) {
 
     const releaseFile : Buffer = await download(`https://github.com/oblakstudio/wpwebpack/releases/download/v${version}/wp-webpack-${version}.zip`);
     const unzippedDir: unzipper.CentralDirectory = await unzipper.Open.buffer(releaseFile);
 
-    //for each file
+    // for each file
     // remove base folder from path (first folder in path string exploded by /)
     // plop files to disk recursively creating directories while including the install dir as base
     try {
-      await Promise.all(this.extractFiles(unzippedDir));
+      await Promise.all(this.extractFiles(unzippedDir, dirPath));
     } catch (error) {
       console.error(error);
     }
 
   }
 
-  private extractFiles(unzippedDir: unzipper.CentralDirectory) : Promise<void>[] {
+  private extractFiles(unzippedDir: unzipper.CentralDirectory, dirPath: string) : Promise<void>[] {
 
     return unzippedDir.files.filter((file) => 'File' === file.type).map(async (file) => {
 
-      const formattedPath = [this.installDir].concat(file.path);
+      const formattedPath = [dirPath].concat(file.path);
       const fullPath      = path.resolve(...formattedPath);
 
       return await fs.outputFile(
@@ -199,7 +215,17 @@ class Installer {
   }
 
   private postInstall() {
-    this.spinner.succeed(`${g(`DOWNLOADED`)} WP-webpack files`);
+
+    // Basic info
+    console.log();
+    console.log(logSymbols.success, g('ALL DONE!'), 'WPwebpack has been installed');
+    console.log(logSymbols.info, 'Files have been installed to: ', c(this.installDir));
+
+    // Quickstart
+    console.log();
+    console.log(logSymbols.info, 'You can find the QuickStart guide at:');
+    console.log(b('https://wpwebpack.js.org'));
+
   }
 
   private exit(message = 'Installation cancelled') : void {

@@ -3,7 +3,6 @@
   "description": "A WPWebpack project",
   "version": "1.5.0",
   "license": "GPL-3.0",
-  "private": true,
   "scripts": {
     "build": "webpack --progress --config assets/build/webpack.config.js",
     "build:production": "webpack --env production --progress --config assets/build/webpack.config.js",

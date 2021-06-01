@@ -66,11 +66,10 @@ var ora_1 = __importDefault(require("ora"));
 var log_symbols_1 = __importDefault(require("log-symbols"));
 var prompts_1 = __importDefault(require("prompts"));
 var download_1 = __importDefault(require("download"));
-var check_node_version_1 = __importDefault(require("check-node-version"));
 var unzipper = __importStar(require("unzipper"));
 var chalk_1 = require("chalk");
 var execa_1 = require("execa");
-var clearConsole = require('clear-any-console');
+var upgrader_1 = __importDefault(require("./upgrader"));
 var Installer = /** @class */ (function () {
     function Installer(version) {
         var _a;
@@ -82,7 +81,9 @@ var Installer = /** @class */ (function () {
             }
         }).argv;
         this.releaseVer = version;
-        this.installDir = (_a = argv.dir) !== null && _a !== void 0 ? _a : process.cwd();
+        this.installDir = (_a = path_1["default"].resolve(process.cwd(), argv.dir)) !== null && _a !== void 0 ? _a : process.cwd();
+        this.upgradeDir = path_1["default"].resolve(this.installDir, 'tmp');
+        this.upgrading = false;
         this.spinner = ora_1["default"]({
             text: ''
         });
@@ -94,64 +95,51 @@ var Installer = /** @class */ (function () {
      */
     Installer.prototype.run = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var error_1, reason_1;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
+            var upgrade, _a, reason_1;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
                     case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, this.sanityCheck()];
+                        try {
+                            this.sanityCheck();
+                        }
+                        catch (error) {
+                            this.exit(error.message);
+                            return [2 /*return*/, 1];
+                        }
+                        _b.label = 1;
                     case 1:
-                        _a.sent();
-                        return [3 /*break*/, 3];
+                        _b.trys.push([1, 6, , 7]);
+                        if (!(this.preinstallCheck())) return [3 /*break*/, 3];
+                        return [4 /*yield*/, this.upgradePrompt()];
                     case 2:
-                        error_1 = _a.sent();
-                        this.exit(error_1.message);
-                        return [2 /*return*/, 1];
+                        _a = _b.sent();
+                        return [3 /*break*/, 4];
                     case 3:
-                        _a.trys.push([3, 7, , 8]);
-                        if (!this.preinstallCheck()) return [3 /*break*/, 5];
-                        return [4 /*yield*/, this.confirmOverwrite()];
+                        _a = false;
+                        _b.label = 4;
                     case 4:
-                        _a.sent();
-                        _a.label = 5;
-                    case 5: return [4 /*yield*/, this.install()];
-                    case 6:
-                        _a.sent();
+                        upgrade = _a;
+                        return [4 /*yield*/, this.install(upgrade)];
+                    case 5:
+                        _b.sent();
                         return [2 /*return*/, 0];
-                    case 7:
-                        reason_1 = _a.sent();
+                    case 6:
+                        reason_1 = _b.sent();
                         this.exit(reason_1);
                         return [2 /*return*/, 1];
-                    case 8: return [2 /*return*/];
+                    case 7: return [2 /*return*/];
                 }
             });
         });
     };
     Installer.prototype.sanityCheck = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var manualPromisification;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        clearConsole();
-                        manualPromisification = new Promise(function (resolve, reject) {
-                            check_node_version_1["default"]({ node: '>= 12' }, function (error, result) {
-                                if (error) {
-                                    return reject(error);
-                                }
-                                if (!result.isSatisfied) {
-                                    return reject(new Error("Incorrect Node.js version. Required: " + result.versions.node.wanted + ", Found:" + result.versions.node.version));
-                                }
-                                return resolve();
-                            });
-                        });
-                        return [4 /*yield*/, manualPromisification];
-                    case 1:
-                        _a.sent();
-                        return [2 /*return*/];
-                }
-            });
-        });
+        console.clear();
+        console.log("Welcome to " + chalk_1.cyan('WPwebpack') + " installer v" + this.releaseVer);
+        console.log("Depending on your internet and computer speed, this might take a couple of minutes");
+        var nodeVersion = parseInt(process.versions.node.split('.')[0]);
+        if (nodeVersion < 12) {
+            throw new Error("Incorrect Node.js version. Required: 12, Found:" + nodeVersion);
+        }
     };
     Installer.prototype.preinstallCheck = function () {
         return fs_extra_1["default"].existsSync(path_1["default"].resolve(this.installDir, 'wpwp.config.js'));
@@ -159,51 +147,71 @@ var Installer = /** @class */ (function () {
     /**
      * Displays confirm files promt during installation
      */
-    Installer.prototype.confirmOverwrite = function () {
+    Installer.prototype.upgradePrompt = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var response;
+            var doUpgrade, doOverwrite;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        console.log(log_symbols_1["default"].error, chalk_1.red('Detected WP-webpack instalation files.'));
+                        console.log(log_symbols_1["default"].info, chalk_1.yellow('Detected WP-webpack instalation files.'));
                         return [4 /*yield*/, prompts_1["default"]({
                                 type: 'text',
-                                name: 'overwrite',
-                                message: 'Overwrite? (y/n)'
+                                name: 'response',
+                                message: 'Upgrade? (y/n)'
                             })];
                     case 1:
-                        response = _a.sent();
-                        if (response.overwrite !== 'y') {
+                        doUpgrade = _a.sent();
+                        if (doUpgrade.response == 'y') {
+                            return [2 /*return*/, true];
+                        }
+                        return [4 /*yield*/, prompts_1["default"]({
+                                type: 'text',
+                                name: 'response',
+                                message: 'Overwrite? (y/n)'
+                            })];
+                    case 2:
+                        doOverwrite = _a.sent();
+                        if (doOverwrite.response !== 'y') {
                             throw new Error('Installation cancelled');
                         }
-                        return [2 /*return*/];
+                        return [2 /*return*/, false];
                 }
             });
         });
     };
-    Installer.prototype.install = function () {
+    Installer.prototype.install = function (upgrade) {
         return __awaiter(this, void 0, void 0, function () {
+            var downloadDir, upgrader;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
+                        downloadDir = upgrade ? this.upgradeDir : this.installDir;
                         this.spinner.start(chalk_1.yellow('DOWNLOADING') + " WP-webpack files...");
-                        return [4 /*yield*/, this.downloadRelease(this.releaseVer)];
+                        return [4 /*yield*/, this.downloadRelease(this.releaseVer, downloadDir)];
                     case 1:
                         _a.sent();
                         this.spinner.succeed(chalk_1.green("DOWNLOADED") + " WP-webpack files");
-                        this.spinner.start(chalk_1.yellow('Installing') + " packages...");
-                        return [4 /*yield*/, this.installPackages()];
+                        if (!upgrade) return [3 /*break*/, 3];
+                        upgrader = new upgrader_1["default"](this.installDir, this.upgradeDir);
+                        return [4 /*yield*/, upgrader.run()];
                     case 2:
                         _a.sent();
+                        _a.label = 3;
+                    case 3:
+                        this.spinner.start(chalk_1.yellow('Installing') + " packages...");
+                        return [4 /*yield*/, this.installPackages()];
+                    case 4:
+                        _a.sent();
                         this.spinner.succeed(chalk_1.green("Installed") + " packages");
+                        this.postInstall();
                         return [2 /*return*/];
                 }
             });
         });
     };
-    Installer.prototype.downloadRelease = function (version) {
+    Installer.prototype.downloadRelease = function (version, dirPath) {
         return __awaiter(this, void 0, void 0, function () {
-            var releaseFile, unzippedDir, error_2;
+            var releaseFile, unzippedDir, error_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, download_1["default"]("https://github.com/oblakstudio/wpwebpack/releases/download/v" + version + "/wp-webpack-" + version + ".zip")];
@@ -215,27 +223,27 @@ var Installer = /** @class */ (function () {
                         _a.label = 3;
                     case 3:
                         _a.trys.push([3, 5, , 6]);
-                        return [4 /*yield*/, Promise.all(this.extractFiles(unzippedDir))];
+                        return [4 /*yield*/, Promise.all(this.extractFiles(unzippedDir, dirPath))];
                     case 4:
                         _a.sent();
                         return [3 /*break*/, 6];
                     case 5:
-                        error_2 = _a.sent();
-                        console.error(error_2);
+                        error_1 = _a.sent();
+                        console.error(error_1);
                         return [3 /*break*/, 6];
                     case 6: return [2 /*return*/];
                 }
             });
         });
     };
-    Installer.prototype.extractFiles = function (unzippedDir) {
+    Installer.prototype.extractFiles = function (unzippedDir, dirPath) {
         var _this = this;
         return unzippedDir.files.filter(function (file) { return 'File' === file.type; }).map(function (file) { return __awaiter(_this, void 0, void 0, function () {
             var formattedPath, fullPath, _a, _b, _c;
             return __generator(this, function (_d) {
                 switch (_d.label) {
                     case 0:
-                        formattedPath = [this.installDir].concat(file.path);
+                        formattedPath = [dirPath].concat(file.path);
                         fullPath = path_1["default"].resolve.apply(path_1["default"], formattedPath);
                         _b = (_a = fs_extra_1["default"]).outputFile;
                         _c = [fullPath];
@@ -261,7 +269,14 @@ var Installer = /** @class */ (function () {
         });
     };
     Installer.prototype.postInstall = function () {
-        this.spinner.succeed(chalk_1.green("DOWNLOADED") + " WP-webpack files");
+        // Basic info
+        console.log();
+        console.log(log_symbols_1["default"].success, chalk_1.green('ALL DONE!'), 'WPwebpack has been installed');
+        console.log(log_symbols_1["default"].info, 'Files have been installed to: ', chalk_1.cyan(this.installDir));
+        // Quickstart
+        console.log();
+        console.log(log_symbols_1["default"].info, 'You can find the QuickStart guide at:');
+        console.log(chalk_1.blueBright('https://wpwebpack.js.org'));
     };
     Installer.prototype.exit = function (message) {
         if (message === void 0) { message = 'Installation cancelled'; }
