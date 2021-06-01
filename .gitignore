@@ -1,5 +1,7 @@
 build/*.zip
+src/dist
+src/node_modules
+test
 node_modules
-dist
 package-lock.json
 src/node_modules
