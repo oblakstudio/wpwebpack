@@ -70,7 +70,6 @@ let webpackConfig = {
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
-        include: config.paths.assets,
         type: 'asset/resource',
         generator: {
           filename: `images/${assetsFilenames}[ext]`,
@@ -78,7 +77,6 @@ let webpackConfig = {
       },
       {
         test: /\.(ttf|otf|eot|woff2?)$/,
-        include: config.paths.assets,
         type: 'asset/resource',
         generator: {
           filename: `fonts/${assetsFilenames}[ext]`,
