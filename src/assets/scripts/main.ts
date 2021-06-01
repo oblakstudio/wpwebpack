@@ -1,12 +1,9 @@
 import { Router } from 'body-class-router';
 
-import CommonRoute from './routes/common';
-import HomeRoute from './routes/Home';
-
+import CommonRoute from './routes/common.resolver';
 
 const routes = new Router({
   common: new CommonRoute(),
-  home:   new HomeRoute(),
 });
 
 jQuery(() => {
