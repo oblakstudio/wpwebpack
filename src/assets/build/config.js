@@ -5,13 +5,14 @@ const { merge } = require('webpack-merge');
 
 // eslint-disable-next-line import/no-dynamic-require
 const userConfig = require('../../wpwp.config.js');
-
+const nodeVersion = process.versions.node.split('.')[0];
 const isProduction = !!((argv.env && argv.env == 'production') || argv.p);
 const rootPath = (userConfig.paths && userConfig.paths.root)
   ? userConfig.paths.root
   : process.cwd();
 
 const config = merge({
+  useFibers: ( nodeVersion != 16 ) ? true : false,
   open: true,
   copy: 'images/**/*',
   cacheBusting: userConfig.cacheBusting,

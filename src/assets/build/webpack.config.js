@@ -15,7 +15,7 @@ const assetsFilenames = (config.enabled.cacheBusting) ? config.cacheBusting : '[
 
 let webpackConfig = {
   stats: false,
-  devtool: (config.enabled.sourceMaps) ? 'source-map' : false,
+  devtool: (config.enabled.sourceMaps) ? 'eval-source-map' : false,
   context: config.paths.assets,
   entry: config.entry,
   cache: {
@@ -42,7 +42,6 @@ let webpackConfig = {
             loader: 'css-loader',
             options: {
                 importLoaders: 2,
-                sourceMap: config.enabled.sourceMaps,
             },
           },
           {
@@ -62,7 +61,7 @@ let webpackConfig = {
               sourceMap: config.enabled.sourceMaps,
               implementation: require('sass'),
               sassOptions: {
-                fiber: require('fibers'),
+                fiber: config.useFibers ? require('fibers') : false,
               },
             },
           },
