@@ -11,7 +11,9 @@ import UpgradeOpts from './upgrade-opts';
 export default class Upgrader {
 
   private installDir: string;
+
   private upgradeDir: string;
+
   private spinner : ora.Ora;
 
   public constructor(installDir: string, upgradeDir: string) {
