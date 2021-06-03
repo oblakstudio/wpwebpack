@@ -1,3 +1,11 @@
+## [2.0.2](https://github.com/oblakstudio/wpwebpack/compare/v2.0.1...v2.0.2) (2021-06-03)
+
+
+### Bug Fixes
+
+* **installer:** Fixed error when installing without directory parameter ([e8db280](https://github.com/oblakstudio/wpwebpack/commit/e8db2800bb7f04b65144bc3825d61107332917dc))
+* **upgrader:** Fixed typos ([e96409e](https://github.com/oblakstudio/wpwebpack/commit/e96409e4fbe7e445527e23bb21bf5c1892feb090))
+
 ## [2.0.1](https://github.com/oblakstudio/wpwebpack/compare/v2.0.0...v2.0.1) (2021-06-01)
 
 
