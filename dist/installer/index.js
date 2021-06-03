@@ -22,7 +22,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 exports.__esModule = true;
-var Installer_1 = __importDefault(require("./Installer"));
+var installer_component_1 = __importDefault(require("./installer.component"));
 var config = __importStar(require("../package.json"));
-(new Installer_1["default"](config.version)).run()
+(new installer_component_1["default"](config.version)).run()
     .then(function (returnValue) { process.exit(returnValue); })["catch"](function (exception) { return console.error(exception); });

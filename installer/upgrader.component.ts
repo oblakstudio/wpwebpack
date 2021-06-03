@@ -45,14 +45,14 @@ export default class Upgrader {
     }
 
     if (opts.editorconfig) {
-      this.spinner.start(`${y('zcUpdating')} editorconfig...`);
+      this.spinner.start(`${y('Updating')} editorconfig...`);
       await this.updateFiles(['.editorconfig']);
       this.spinner.succeed(`${g(`Updated`)} editorconfig`);
 
     }
 
     if (opts.linters) {
-      this.spinner.start(`${y('zcUpdating')} linters...`);
+      this.spinner.start(`${y('Updating')} linters...`);
       await this.updateFiles(['.eslintrc.json', '.stylelintrc']);
       this.spinner.succeed(`${g(`Updated`)} linters`);
 

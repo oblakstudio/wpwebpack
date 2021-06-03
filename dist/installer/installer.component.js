@@ -69,7 +69,7 @@ var download_1 = __importDefault(require("download"));
 var unzipper = __importStar(require("unzipper"));
 var chalk_1 = require("chalk");
 var execa_1 = require("execa");
-var upgrader_1 = __importDefault(require("./upgrader"));
+var upgrader_component_1 = __importDefault(require("./upgrader.component"));
 var Installer = /** @class */ (function () {
     function Installer(version) {
         var _a;
@@ -192,7 +192,7 @@ var Installer = /** @class */ (function () {
                         _a.sent();
                         this.spinner.succeed(chalk_1.green("DOWNLOADED") + " WP-webpack files");
                         if (!upgrade) return [3 /*break*/, 3];
-                        upgrader = new upgrader_1["default"](this.installDir, this.upgradeDir);
+                        upgrader = new upgrader_component_1["default"](this.installDir, this.upgradeDir);
                         return [4 /*yield*/, upgrader.run()];
                     case 2:
                         _a.sent();
