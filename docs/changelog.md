@@ -1,3 +1,11 @@
+## [2.0.1](https://github.com/oblakstudio/wpwebpack/compare/v2.0.0...v2.0.1) (2021-06-01)
+
+
+### Bug Fixes
+
+* **core:** Added a tsconfig.json file ([f10a7e0](https://github.com/oblakstudio/wpwebpack/commit/f10a7e0c0e2caadedfd4a73add5ac0778f152cd9))
+* **stylelint:** Added ignore options to value-keyword-case ([3cf03e7](https://github.com/oblakstudio/wpwebpack/commit/3cf03e7d472016871a3fd26f54b4f44aa0f51d63)), closes [#4](https://github.com/oblakstudio/wpwebpack/issues/4)
+
 # [2.0.0](https://github.com/oblakstudio/wpwebpack/compare/v1.5.0...v2.0.0) (2021-06-01)
 
 
