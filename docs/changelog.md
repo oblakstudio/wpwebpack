@@ -1,3 +1,10 @@
+## [2.0.3](https://github.com/oblakstudio/wpwebpack/compare/v2.0.2...v2.0.3) (2021-06-28)
+
+
+### Bug Fixes
+
+* **imagemin:** Downgraded imagemin-svgo to 8.0.0 ([d0d8b45](https://github.com/oblakstudio/wpwebpack/commit/d0d8b450ea25723b5ea1aa63e05c527eb98ccfbb))
+
 ## [2.0.2](https://github.com/oblakstudio/wpwebpack/compare/v2.0.1...v2.0.2) (2021-06-03)
 
 
