@@ -47,9 +47,7 @@ let webpackConfig = {
             loader: 'postcss-loader',
             options: {
               postcssOptions: {
-                plugins: [
-                  require.resolve('autoprefixer'),
-                ],
+                config: require.resolve('./postcss.config.js'),
               },
               sourceMap: config.enabled.sourceMaps,
             },

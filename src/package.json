@@ -43,7 +43,7 @@
     "imagemin-gifsicle": "^7.0.0",
     "imagemin-jpegtran": "^7.0.0",
     "imagemin-optipng": "^8.0.0",
-    "imagemin-svgo": "^9.0.0",
+    "imagemin-svgo": "^8.0.0",
     "mini-css-extract-plugin": "^1.6.0",
     "postcss": "^8.3.0",
     "postcss-loader": "^5.3.0",
